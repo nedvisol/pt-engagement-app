@@ -1,0 +1,17 @@
+type Query {
+  userProfiles(filter: QueryFilterInput, sort: [QuerySortInput!]): [UserProfile]
+  userProfile(id: String!): UserProfile
+}
+
+type Mutation {
+  addUserProfile(firstName: String!, lastName: String!, phone: String!, email: String!, dateOfBirth: String!): UserProfile!
+}
+
+type UserProfile {
+  id: String!
+  firstName: String!
+  lastName: String!
+  phone: String!
+  email: String!
+  dateOfBirth: String!
+}

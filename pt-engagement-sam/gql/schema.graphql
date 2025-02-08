@@ -1,0 +1,41 @@
+schema {
+  query: Query
+  mutation: Mutation
+}
+
+
+input QuerySortInput {
+  field: String!
+  order: String!
+}
+
+input QueryFilterInput {
+  filterExpression: String  # e.g. "author = :author"
+  expressionAttributeValues: [QueryExpressionAttributeValueInput] # e.g. [{key: ":author", value: "John Doe"}]
+}
+
+input QueryExpressionAttributeValueInput {
+  key: String!
+  value: String!
+}
+
+type Query {
+  posts(filter: QueryFilterInput, sort: [QuerySortInput!]): [Post]
+  post(id: String!): Post
+}
+
+type Mutation {
+  addPost(author: String!, title: String!, content: String!): Post!
+}
+
+type Post {
+  id: String!
+  author: String
+  title: String
+  content: String
+  ups: Int!
+  downs: Int!
+  version: Int!
+}
+
+
