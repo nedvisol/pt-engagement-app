@@ -1,3 +1,18 @@
+input QuerySortInput {
+  field: String!
+  order: String!
+}
+
+input QueryFilterInput {
+  filterExpression: String  # e.g. "author = :author"
+  expressionAttributeValues: [QueryExpressionAttributeValueInput] # e.g. [{key: ":author", value: "John Doe"}]
+}
+
+input QueryExpressionAttributeValueInput {
+  key: String!
+  value: String!
+}
+
 type Query {
   userProfiles(filter: QueryFilterInput, sort: [QuerySortInput!]): [UserProfile]
   userProfile(id: String!): UserProfile

@@ -1,0 +1,12 @@
+{
+  "devDependencies": {
+    "@aws-appsync/eslint-plugin": "^2.0.1",
+    "@typescript-eslint/parser": "^8.23.0",
+    "esbuild": "^0.25.0",
+    "eslint": "^9.20.0",
+    "typescript": "^5.7.3"
+  },
+  "dependencies": {
+    "@aws-appsync/utils": "^1.12.0"
+  }
+}
