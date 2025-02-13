@@ -1,8 +1,24 @@
 import { Context, util, DynamoDBQueryRequest } from "@aws-appsync/utils";
-export function request(ctx: Context) {    
+
+export interface QueryFilterInput {
+    filterExpression: string;
+    expressionAttributeValues: {key: string, value: any}[];
+}
+
+export interface QuerySortInput {
+    sortExpression: string;
+    expressionAttributeValues: {key: string, value: any}[];
+}
+
+export interface FindManyRequestOptions {
+    filter: QueryFilterInput;
+    sort: QuerySortInput;
+}
+
+export function request(options: FindManyRequestOptions): DynamoDBQueryRequest {    
     
     // filter is of type QueryFilterInput and sort is of type QuerySortInput
-    const { filter, sort } = ctx.arguments; 
+    const { filter, sort } = options; 
     
     const {filterExpression, expressionAttributeValues} = filter;
 

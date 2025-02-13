@@ -1,0 +1,24 @@
+Resources:
+  UserProfileTable:
+    Type: AWS::Serverless::SimpleTable
+
+  HelloWorldGraphQLApi:
+    Properties:
+      Functions:
+        findOneUserProfileFn:
+          Runtime:
+            Name: APPSYNC_JS
+            Version: 1.0.0
+          DataSource: NONE
+          CodeUri: ./src/UserProfile/gql/findOne.js
+
+      Resolvers:
+        Query:
+          userProfile:
+            Runtime:
+              Name: APPSYNC_JS
+              Version: "1.0.0"
+            Pipeline:
+            - findOneUserProfileFn
+
+

@@ -1,7 +1,9 @@
 import { Context, util, DynamoDBGetItemRequest } from "@aws-appsync/utils";
-export function request(ctx: Context) {    
-    const { id } = ctx.arguments;
- 
+
+export interface FindOneRequestOptions {    
+}
+
+export function request(id: string, options? : FindOneRequestOptions) {        
     const paylooad: DynamoDBGetItemRequest = {
         operation: 'GetItem',
         key: util.dynamodb.toMapValues({ id }),

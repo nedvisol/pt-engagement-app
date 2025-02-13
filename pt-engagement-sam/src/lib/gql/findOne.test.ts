@@ -15,12 +15,8 @@ describe('findOne', () => {
 
     describe('request', () => {
         it('should create a DynamoDB GetItem request with the given id', () => {
-            const ctx: Context = {
-                arguments: { id: '123' },
-                // other properties of Context can be mocked as needed
-            } as any;
-
-            const result = request(ctx);
+            const id = '123';
+            const result = request(id);
 
             expect(result).toEqual({
                 operation: 'GetItem',
